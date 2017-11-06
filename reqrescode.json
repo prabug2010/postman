@@ -1,0 +1,171 @@
+{
+	"info": {
+		"name": "Reqrs API",
+		"_postman_id": "459d98f9-a760-2d9f-0f3e-ad7d9b999775",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Put method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"name1\", \"{{name}}\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2?{{first_name1}}=data",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					],
+					"query": [
+						{
+							"key": "{{first_name1}}",
+							"value": "data",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"first_name1\", \"{{first_name}}\");",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is greater than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.above(200);",
+							"});",
+							"",
+							"tests[\"responseCode is 200\"] = responseCode.code === 200;",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var date = new Date();",
+							"var time = date.getTime();",
+							"postman.setEnvironmentVariable(\"currentTime\", time);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://reqres.in/api/users/2?time={{currentTime}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					],
+					"query": [
+						{
+							"key": "time",
+							"value": "{{currentTime}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"id1\", \"{{id}}\");",
+							"",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							"",
+							"tests[\"Successful POST response code\"] = responseCode.code === 201 || responseCode.code === 202;",
+							"",
+							"postman.setNextRequest(\"GET_Sample\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}"
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
