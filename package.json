@@ -1,0 +1,10 @@
+{
+  "name": "Postman codes",
+  "version": "1.0.0",
+  "scripts":
+  {
+  "api-test": "newman run reqres.json"
+  "dependencies": {
+    "newman": "^3.8.3"
+  }
+}
